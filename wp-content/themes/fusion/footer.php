@@ -1,4 +1,4 @@
-<footer class="footer">
+<footer class="footer" id="footer">
       <div class="container">
         <div class="heading-h2 text-center">
           <div class="line" data-aos="fade-down"></div>
@@ -174,7 +174,9 @@
       </div>
     </footer>
   
-    
+    <script>
+      AOS.init();
+    </script>
     <?php wp_footer(); ?>
   </body>
 </html>

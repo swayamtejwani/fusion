@@ -30,12 +30,8 @@
     >
       <div class="container">
         <div class="heading-center text-center">
-          <h1>We're <span>Fusion</span>, We Build Things for Human</h1>
-          <ul>
-            <li><a href="#" title="Design">Design</a></li>
-            <li><a href="#" title="Strategy">Strategy</a></li>
-            <li><a href="#" title="Branding">Branding</a></li>
-          </ul>
+          <?php echo get_field('heading'); ?>
+          
         </div>
       </div>
       <div class="header-bottom">
@@ -49,7 +45,7 @@
               height="56"
             />
             <a
-              href="#"
+              href="#footer"
               class="d-flex align-items-center link"
               title="Get in Touch"
               >Get in touch

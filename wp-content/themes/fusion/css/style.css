@@ -102,6 +102,14 @@ img {
     border-right: none;
 }
 
+
+.heading-center ul li{
+    color: var(--white-clr);
+    text-decoration: none;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
 .heading-center ul li a {
     color: var(--white-clr);
     text-decoration: none;

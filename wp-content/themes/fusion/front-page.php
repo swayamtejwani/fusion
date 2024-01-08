@@ -6,9 +6,9 @@ get_header();
         <div class="container">
           <div class="heading-h2 text-center">
             <div class="line" data-aos="fade-down"></div>
-            <div class="sub-txt" data-aos="fade-up">Our services</div>
+            <div class="sub-txt" data-aos="fade-up"><?php echo get_field('services_heading'); ?></div>
             <h2 data-aos="fade-up">
-              Our team will take your business <br />presence to new level
+              <?php echo get_field('services_subheading'); ?>
             </h2>
           </div>
           <div class="row">
