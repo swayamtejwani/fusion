@@ -85,90 +85,28 @@
         </div>
         <div class="footer-bottom">
           <div class="foo1" data-aos="fade-up">
-            <img
-              src="<?php echo get_bloginfo('template_url'); ?>/images/fusion.svg"
-              alt="Fusion"
-              title="Fusion"
-              width="55"
-              height="56"
-            />
+           <?php
+            if(is_active_sidebar('footer-1'))
+            dynamic_sidebar('footer-1');
+           ?>
           </div>
           <div class="foo2" data-aos="fade-up">
-            <h3>California Office</h3>
-            <p>
-              4243 Woodland Terrace <br />Sacramento, CA 95814 <br />916 753
-              2645
-            </p>
+          <?php
+            if(is_active_sidebar('footer-2'))
+            dynamic_sidebar('footer-2');
+           ?>
           </div>
           <div class="foo2" data-aos="fade-up">
-            <h3>New york Office</h3>
-            <p>
-              885 Oakwood Avenue<br />
-              New York, NY 10013<br />
-              212 660 0744
-            </p>
+          <?php
+            if(is_active_sidebar('footer-3'))
+            dynamic_sidebar('footer-3');
+           ?>
           </div>
           <div class="foo3" data-aos="fade-up">
-            <h3>Other Contact</h3>
-            <p>
-              <a
-                href="mailto:jobs@templateocean.com"
-                title="jobs@templateocean.com"
-                >jobs@templateocean.com</a
-              >
-            </p>
-            <ul>
-              <li>
-                <a href="#" title="Facebook"
-                  ><img
-                    src="<?php echo get_bloginfo('template_url'); ?>/images/facebook.svg"
-                    alt="Facebook"
-                    title="Facebook"
-                    width="22"
-                    height="22"
-                /></a>
-              </li>
-              <li>
-                <a href="#" title="Twitter"
-                  ><img
-                    src="<?php echo get_bloginfo('template_url'); ?>/images/twitter.svg"
-                    alt="Twitter"
-                    title="Twitter"
-                    width="22"
-                    height="22"
-                /></a>
-              </li>
-              <li>
-                <a href="#" title="Pinterest"
-                  ><img
-                    src="<?php echo get_bloginfo('template_url'); ?>/images/pinterest.svg"
-                    alt="Pinterest"
-                    title="Pinterest"
-                    width="22"
-                    height="22"
-                /></a>
-              </li>
-              <li>
-                <a href="#" title="Instagram"
-                  ><img
-                    src="<?php echo get_bloginfo('template_url'); ?>/images/instagram.svg"
-                    alt="Instagram"
-                    title="Instagram"
-                    width="22"
-                    height="22"
-                /></a>
-              </li>
-              <li>
-                <a href="#" title="Dribbble"
-                  ><img
-                    src="<?php echo get_bloginfo('template_url'); ?>/images/dribbble.svg"
-                    alt="Dribbble"
-                    title="Dribbble"
-                    width="22"
-                    height="22"
-                /></a>
-              </li>
-            </ul>
+          <?php
+            if(is_active_sidebar('footer-4'))
+            dynamic_sidebar('footer-4');
+           ?>
           </div>
         </div>
       </div>

@@ -429,7 +429,7 @@ img {
     font-family: 'Open Sans', sans-serif;
 }
 
-.form-floating>label {
+.form-floating label {
     color: var(--white-clr);
     font-size: 12px;
     padding-left: 0;
@@ -437,10 +437,10 @@ img {
     padding-right: 0;
 }
 
-.form-floating>.form-control-plaintext~label,
-.form-floating>.form-control:focus~label,
-.form-floating>.form-control:not(:placeholder-shown)~label,
-.form-floating>.form-select~label {
+.form-floating .form-control-plaintext~label,
+.form-floating .form-control:focus~label,
+.form-floating .form-control:not(:placeholder-shown)~label,
+.form-floating .form-select~label {
     background: none;
     color: var(--orange-clr);
     transform: scale(.85) translateY(-.5rem) translateX(0);

@@ -1,7 +1,8 @@
 <?php
 
-// Disable Gutenberg
+// Disable Gutenberg from page, post and widgets
 add_filter('use_block_editor_for_post', '__return_false', 10);
+add_filter( 'use_widgets_block_editor', '__return_false' );
 
 // Theme support for title, thumbnail
 function fusion_theme_setup() {
@@ -71,3 +72,50 @@ require_once 'custom-post-types/testimonials.php';
 
 // Include CPT teams
 require_once 'custom-post-types/teams.php';
+
+
+/**
+ * Add a sidebar.
+ */
+function fusion_widgets_init() {
+	register_sidebar( array(
+		'name'          => __( 'Footer Column 1', 'fusion' ),
+		'id'            => 'footer-1',
+		'description'   => __( 'Widgets in this area will be shown on 1st column of footer.', 'fusion' ),
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '<h3 class="widgettitle">',
+		'after_title'   => '</h3>',
+	) );
+
+    register_sidebar( array(
+		'name'          => __( 'Footer Column 2', 'fusion' ),
+		'id'            => 'footer-2',
+		'description'   => __( 'Widgets in this area will be shown on 2nd column of footer.', 'fusion' ),
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '<h3 class="widgettitle">',
+		'after_title'   => '</h3>',
+	) );
+
+    register_sidebar( array(
+		'name'          => __( 'Footer Column 3', 'fusion' ),
+		'id'            => 'footer-3',
+		'description'   => __( 'Widgets in this area will be shown on 3rd column of footer.', 'fusion' ),
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '<h3 class="widgettitle">',
+		'after_title'   => '</h3>',
+	) );
+
+    register_sidebar( array(
+		'name'          => __( 'Footer Column 4', 'fusion' ),
+		'id'            => 'footer-4',
+		'description'   => __( 'Widgets in this area will be shown on 4th column of footer.', 'fusion' ),
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '<h3 class="widgettitle">',
+		'after_title'   => '</h3>',
+	) );
+}
+add_action( 'widgets_init', 'fusion_widgets_init' );
