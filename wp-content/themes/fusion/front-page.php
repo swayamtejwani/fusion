@@ -53,87 +53,55 @@ get_header();
           </div>
           <div class="pro">
             <div id="carouselExampleCaptions" class="carousel slide">
-              <div class="carousel-indicators">
-                <button
+            <?php if(have_rows('projects')): ?>
+                <div class="carousel-indicators">
+                <?php
+                $i = 0; 
+                while(have_rows('projects')):the_row();
+                if($i==0){
+                    $class="active";
+                    $current = "true";
+                }else{
+                    $class="";
+                    $current = "";
+                }
+                    ?>
+                    <button
                   type="button"
                   data-bs-target="#carouselExampleCaptions"
-                  data-bs-slide-to="0"
-                  class="active"
-                  aria-current="true"
-                  aria-label="Slide 1"
+                  data-bs-slide-to="<?php echo $i; ?>"
+                  class="<?php echo $class; ?>"
+                  aria-current="<?php echo $current; ?>"
+                  aria-label="Slide <?php echo $i+1; ?>"
                 ></button>
-                <button
-                  type="button"
-                  data-bs-target="#carouselExampleCaptions"
-                  data-bs-slide-to="1"
-                  aria-label="Slide 2"
-                ></button>
-                <button
-                  type="button"
-                  data-bs-target="#carouselExampleCaptions"
-                  data-bs-slide-to="2"
-                  aria-label="Slide 3"
-                ></button>
-                <button
-                  type="button"
-                  data-bs-target="#carouselExampleCaptions"
-                  data-bs-slide-to="3"
-                  aria-label="Slide 4"
-                ></button>
-                <button
-                  type="button"
-                  data-bs-target="#carouselExampleCaptions"
-                  data-bs-slide-to="4"
-                  aria-label="Slide 5"
-                ></button>
-              </div>
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img
-                    src="<?php echo get_bloginfo('template_url'); ?>/images/pro.jpg"
-                    class="d-block w-100"
-                    alt="Project One"
-                    width="800"
-                    height="600"
-                  />
+                    <?php
+                    $i++;
+                endwhile;
+                
+                ?>
                 </div>
-                <div class="carousel-item">
-                  <img
-                    src="<?php echo get_bloginfo('template_url'); ?>/images/pro.jpg"
-                    class="d-block w-100"
-                    alt="Project One"
-                    width="800"
-                    height="600"
-                  />
+                <?php endif; ?>
+                <div class="carousel-inner">
+                <?php 
+                $i=0;
+                if(have_rows('projects')):  while(have_rows('projects')):the_row(); ?>
+                    <?php
+                        $image = get_sub_field('project_image'); 
+                        if(!empty($image)){
+                            ?>
+                            <div class="carousel-item <?php echo ($i == 0) ? 'active' : ''; ?>">
+                            <img src="<?php echo $image['url'] ?>" class="d-block w-100" alt="<?php echo $image['alt']; ?>" />
+                            </div>
+                            <?php
+                        }
+                    ?>
+                <?php
+                $i++;
+                endwhile;endif;   ?>
                 </div>
-                <div class="carousel-item">
-                  <img
-                    src="<?php echo get_bloginfo('template_url'); ?>/images/pro.jpg"
-                    class="d-block w-100"
-                    alt="Project One"
-                    width="800"
-                    height="600"
-                  />
-                </div>
-                <div class="carousel-item">
-                  <img
-                    src="<?php echo get_bloginfo('template_url'); ?>/images/pro.jpg"
-                    class="d-block w-100"
-                    alt="Project One"
-                    width="800"
-                    height="600"
-                  />
-                </div>
-                <div class="carousel-item">
-                  <img
-                    src="<?php echo get_bloginfo('template_url'); ?>/images/pro.jpg"
-                    class="d-block w-100"
-                    alt="Project One"
-                    width="800"
-                    height="600"
-                  />
-                </div>
-              </div>
+
+
+
             </div>
           </div>
           <div class="pro-detail">
@@ -178,120 +146,81 @@ get_header();
           </div>
         </div>
         <div class="comp-logo text-center">
-          <img src="<?php echo get_bloginfo('template_url'); ?>/images/logos.png" alt="Partners" width="1141" height="59" />
+        <?php
+            global $post;
+            $args = array('post_type' => 'client','posts_per_page'=>-1);
+            $query = new WP_Query($args);
+            if($query->have_posts()): ?>
+             <div class="owl-carousel owl-theme">
+                <?php while($query->have_posts()):$query->the_post(); ?>
+                <div class="item">
+                    <?php
+                        $image = get_the_post_thumbnail_url();
+                        if($image)
+                        echo '<img src="'.$image.'" alt="'.get_the_title().'">'
+                    ?>
+                </div>
+                <?php endwhile; ?>
+            </div>
+                <?php endif;  wp_reset_query(); ?>
         </div>
         <div class="partners text-center" data-aos="fade-up">
           <div id="carouselExampleIndicators" class="carousel slide">
-            <div class="carousel-indicators">
-              <button
-                type="button"
-                data-bs-target="#carouselExampleIndicators"
-                data-bs-slide-to="0"
-                class="active"
-                aria-current="true"
-                aria-label="Slide 1"
-              ></button>
-              <button
-                type="button"
-                data-bs-target="#carouselExampleIndicators"
-                data-bs-slide-to="1"
-                aria-label="Slide 2"
-              ></button>
-              <button
-                type="button"
-                data-bs-target="#carouselExampleIndicators"
-                data-bs-slide-to="2"
-                aria-label="Slide 3"
-              ></button>
-              <button
-                type="button"
-                data-bs-target="#carouselExampleIndicators"
-                data-bs-slide-to="3"
-                aria-label="Slide 4"
-              ></button>
-            </div>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img
-                  src="<?php echo get_bloginfo('template_url'); ?>/images/user.png"
-                  class=""
-                  alt="Anthony Watkins"
-                  width="75"
-                  height="75"
-                />
-                <div class="user-review">
-                  “These cartridges can be replaced by the printer ink of
-                  similar brand. Compatible Inkjet Cartridge will help you to
-                  make extra-ordinary savings with money back guarantee. As soon
-                  as the cartridge gets empty the ink that it contains begins to
-                  dry”
-                </div>
-                <div class="user-name">
-                  <span>Anthony Watkins</span>
-                </div>
-                <div class="user-position">VP of Product, VISA</div>
-              </div>
-              <div class="carousel-item">
-                <img
-                  src="<?php echo get_bloginfo('template_url'); ?>/images/user.png"
-                  class=""
-                  alt="Anthony Watkins"
-                  width="75"
-                  height="75"
-                />
-                <div class="user-review">
-                  “These cartridges can be replaced by the printer ink of
-                  similar brand. Compatible Inkjet Cartridge will help you to
-                  make extra-ordinary savings with money back guarantee. As soon
-                  as the cartridge gets empty the ink that it contains begins to
-                  dry”
-                </div>
-                <div class="user-name">
-                  <span>Anthony Watkins</span>
-                </div>
-                <div class="user-position">VP of Product, VISA</div>
-              </div>
-              <div class="carousel-item">
-                <img
-                  src="<?php echo get_bloginfo('template_url'); ?>/images/user.png"
-                  class=""
-                  alt="Anthony Watkins"
-                  width="75"
-                  height="75"
-                />
-                <div class="user-review">
-                  “These cartridges can be replaced by the printer ink of
-                  similar brand. Compatible Inkjet Cartridge will help you to
-                  make extra-ordinary savings with money back guarantee. As soon
-                  as the cartridge gets empty the ink that it contains begins to
-                  dry”
-                </div>
-                <div class="user-name">
-                  <span>Anthony Watkins</span>
-                </div>
-                <div class="user-position">VP of Product, VISA</div>
-              </div>
-              <div class="carousel-item">
-                <img
-                  src="<?php echo get_bloginfo('template_url'); ?>/images/user.png"
-                  class=""
-                  alt="Anthony Watkins"
-                  width="75"
-                  height="75"
-                />
-                <div class="user-review">
-                  “These cartridges can be replaced by the printer ink of
-                  similar brand. Compatible Inkjet Cartridge will help you to
-                  make extra-ordinary savings with money back guarantee. As soon
-                  as the cartridge gets empty the ink that it contains begins to
-                  dry”
-                </div>
-                <div class="user-name">
-                  <span>Anthony Watkins</span>
-                </div>
-                <div class="user-position">VP of Product, VISA</div>
-              </div>
-            </div>
+          <?php
+            global $post;
+            $args = array('post_type' => 'testimonials','posts_per_page'=>-1);
+            $query = new WP_Query($args);
+            if($query->have_posts()): 
+                echo '<div class="carousel-indicators">';
+                $i = 0;
+                while($query->have_posts()):
+                    $query->the_post();
+                    if($i==0){
+                        $class="active";
+                        $current = "true";
+                    }else{
+                        $class="";
+                        $current = "";
+                    }
+                    ?>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<?php echo $i; ?>"
+                class="<?php echo $class; ?>" aria-current="<?php echo $current; ?>" aria-label="Slide <?php echo $i+1; ?>" ></button>
+                    <?php
+                $i++;
+                endwhile;
+                echo '</div>';
+            endif;
+            wp_reset_query();
+
+            if($query->have_posts()): 
+                $i=0;
+                echo '<div class="carousel-inner">';
+                while($query->have_posts()):
+                    $query->the_post();
+                    ?>
+                    <div class="carousel-item <?php echo ($i==0)? 'active' : ''; ?>">
+                        <?php
+                            $image = get_the_post_thumbnail_url();
+                            if($image)
+                            echo '<img src="'.$image.'" alt="'.get_the_title().'">';
+                        ?>
+                        <div class="user-review">
+                           <?php echo get_the_content(); ?>
+                        </div>
+                        <div class="user-name">
+                            <span><?php echo get_the_title(); ?></span>
+                        </div>
+                        <div class="user-position"><?php echo get_field('designation'); ?></div>
+                    </div>
+                    <?php
+                    $i++;
+                endwhile;
+                echo '</div>';
+            endif;
+            wp_reset_query();
+              ?>
+            
+           
           </div>
         </div>
       </div>
@@ -303,198 +232,36 @@ get_header();
             <h2 data-aos="fade-up">Our Amazing Team</h2>
           </div>
           <div class="row team-main">
-            <div class="col-lg-3 col-md-6" data-aos="fade-up">
-              <div class="team text-center">
-                <div class="team-left">
-                  <img
-                    src="<?php echo get_bloginfo('template_url'); ?>/images/team.png"
-                    alt="Vincent Gardner"
-                    title="Vincent Gardner"
-                    width="120"
-                    height="120"
-                  />
-                  <div class="team-text">
-                    <h4>Vincent Gardner</h4>
-                    <p>Founder & CEO</p>
-                  </div>
-                </div>
-                <div class="team-right">
-                  Vincent is the Founder & CEO of Fusion. He is leading the
-                  company to success with his experience & skill. Leader
-                  piverate paradigm cortado ship it integrate Space Team
-                  parallax persons grok. Parallax food truck fund 360 campaign
-                  venture capital pitch deck actionable insight innovate.
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6" data-aos="fade-up">
-              <div class="team text-center">
-                <div class="team-left">
-                  <img
-                    src="<?php echo get_bloginfo('template_url'); ?>/images/team.png"
-                    alt="Donna Watson"
-                    title="Donna Watson"
-                    width="120"
-                    height="120"
-                  />
-                  <div class="team-text">
-                    <h4>Donna Watson</h4>
-                    <p>VP of Product</p>
-                  </div>
-                </div>
-                <div class="team-right">
-                  Vincent is the Founder & CEO of Fusion. He is leading the
-                  company to success with his experience & skill. Leader
-                  piverate paradigm cortado ship it integrate Space Team
-                  parallax persons grok. Parallax food truck fund 360 campaign
-                  venture capital pitch deck actionable insight innovate.
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6" data-aos="fade-up">
-              <div class="team text-center">
-                <div class="team-left">
-                  <img
-                    src="<?php echo get_bloginfo('template_url'); ?>/images/team.png"
-                    alt="Armando Ángeles"
-                    title="Armando Ángeles"
-                    width="120"
-                    height="120"
-                  />
-                  <div class="team-text">
-                    <h4>Armando Ángeles</h4>
-                    <p>VP of Business</p>
-                  </div>
-                </div>
-                <div class="team-right">
-                  Vincent is the Founder & CEO of Fusion. He is leading the
-                  company to success with his experience & skill. Leader
-                  piverate paradigm cortado ship it integrate Space Team
-                  parallax persons grok. Parallax food truck fund 360 campaign
-                  venture capital pitch deck actionable insight innovate.
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6" data-aos="fade-up">
-              <div class="team text-center">
-                <div class="team-left">
-                  <img
-                    src="<?php echo get_bloginfo('template_url'); ?>/images/team.png"
-                    alt="Nguyễn Thanh"
-                    title="Nguyễn Thanh"
-                    width="120"
-                    height="120"
-                  />
-                  <div class="team-text">
-                    <h4>Nguyễn Thanh</h4>
-                    <p>Developer</p>
-                  </div>
-                </div>
-                <div class="team-right">
-                  Vincent is the Founder & CEO of Fusion. He is leading the
-                  company to success with his experience & skill. Leader
-                  piverate paradigm cortado ship it integrate Space Team
-                  parallax persons grok. Parallax food truck fund 360 campaign
-                  venture capital pitch deck actionable insight innovate.
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6" data-aos="fade-up">
-              <div class="team text-center">
-                <div class="team-left">
-                  <img
-                    src="<?php echo get_bloginfo('template_url'); ?>/images/team.png"
-                    alt="Vincent Gardner"
-                    title="Vincent Gardner"
-                    width="120"
-                    height="120"
-                  />
-                  <div class="team-text">
-                    <h4>Vincent Gardner</h4>
-                    <p>Founder & CEO</p>
-                  </div>
-                </div>
-                <div class="team-right">
-                  Vincent is the Founder & CEO of Fusion. He is leading the
-                  company to success with his experience & skill. Leader
-                  piverate paradigm cortado ship it integrate Space Team
-                  parallax persons grok. Parallax food truck fund 360 campaign
-                  venture capital pitch deck actionable insight innovate.
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6" data-aos="fade-up">
-              <div class="team text-center">
-                <div class="team-left">
-                  <img
-                    src="<?php echo get_bloginfo('template_url'); ?>/images/team.png"
-                    alt="Donna Watson"
-                    title="Donna Watson"
-                    width="120"
-                    height="120"
-                  />
-                  <div class="team-text">
-                    <h4>Donna Watson</h4>
-                    <p>VP of Product</p>
-                  </div>
-                </div>
-                <div class="team-right">
-                  Vincent is the Founder & CEO of Fusion. He is leading the
-                  company to success with his experience & skill. Leader
-                  piverate paradigm cortado ship it integrate Space Team
-                  parallax persons grok. Parallax food truck fund 360 campaign
-                  venture capital pitch deck actionable insight innovate.
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6" data-aos="fade-up">
-              <div class="team text-center">
-                <div class="team-left">
-                  <img
-                    src="<?php echo get_bloginfo('template_url'); ?>/images/team.png"
-                    alt="Armando Ángeles"
-                    title="Armando Ángeles"
-                    width="120"
-                    height="120"
-                  />
-                  <div class="team-text">
-                    <h4>Armando Ángeles</h4>
-                    <p>VP of Business</p>
-                  </div>
-                </div>
-                <div class="team-right">
-                  Vincent is the Founder & CEO of Fusion. He is leading the
-                  company to success with his experience & skill. Leader
-                  piverate paradigm cortado ship it integrate Space Team
-                  parallax persons grok. Parallax food truck fund 360 campaign
-                  venture capital pitch deck actionable insight innovate.
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6" data-aos="fade-up">
-              <div class="team text-center">
-                <div class="team-left">
-                  <img
-                    src="<?php echo get_bloginfo('template_url'); ?>/images/team.png"
-                    alt="Nguyễn Thanh"
-                    title="Nguyễn Thanh"
-                    width="120"
-                    height="120"
-                  />
-                  <div class="team-text">
-                    <h4>Nguyễn Thanh</h4>
-                    <p>Developer</p>
-                  </div>
-                </div>
-                <div class="team-right">
-                  Vincent is the Founder & CEO of Fusion. He is leading the
-                  company to success with his experience & skill. Leader
-                  piverate paradigm cortado ship it integrate Space Team
-                  parallax persons grok. Parallax food truck fund 360 campaign
-                  venture capital pitch deck actionable insight innovate.
-                </div>
-              </div>
-            </div>
+            <?php
+                $args = array('post_type'=>'team','posts_per_page'=>-1);
+                $query = new WP_Query($args);
+                if($query->have_posts()):while($query->have_posts()):$query->the_post();
+                    ?>
+                    <div class="col-lg-3 col-md-6" data-aos="fade-up">
+                        <div class="team text-center">
+                        <div class="team-left">
+                            <?php 
+                            $image = get_the_post_thumbnail_url(); 
+                            if($image){
+                                echo '<img src="'.$image.'" alt="'.get_the_title().'">';
+                            }
+
+                            ?>
+
+                            <div class="team-text">
+                            <h4><?php echo get_the_title(); ?></h4>
+                            <p><?php echo get_field('designation'); ?></p>
+                            </div>
+                        </div>
+                        <div class="team-right">
+                           <?php echo get_the_content(); ?>
+                        </div>
+                        </div>
+                        </div>
+                    <?php
+                endwhile;endif;
+                wp_reset_query();
+            ?>
           </div>
         </div>
       </div>
