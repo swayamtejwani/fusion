@@ -12,90 +12,35 @@ get_header();
             </h2>
           </div>
           <div class="row">
-            <div class="col-md-4">
-              <div class="section-min" data-aos="fade-up">
-                <img
-                  src="<?php echo get_bloginfo('template_url'); ?>/images/strategy.svg"
-                  alt="Strategy"
-                  title="Strategy"
-                  class="mb-3"
-                  width="19"
-                  height="21"
-                />
-                <h3>Strategy.</h3>
-                <p>
-                  Ship it user story iterate engaging co-working intuitive pitch
-                  deck hacker prototype SpaceTeam user centered design big data.
-                </p>
-                <a
-                  href="#"
-                  class="d-flex align-items-center link"
-                  title="See Details"
-                  >See Details
-                  <img
-                    src="<?php echo get_bloginfo('template_url'); ?>/images/arrow-right.svg"
-                    alt="See Details"
-                    width="11"
-                    height="7"
-                /></a>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="section-min" data-aos="fade-up">
-                <img
-                  src="<?php echo get_bloginfo('template_url'); ?>/images/branding.svg"
-                  alt="Branding"
-                  title="Branding"
-                  class="mb-3"
-                  width="21"
-                  height="21"
-                />
-                <h3>Branding.</h3>
-                <p>
-                  Ship it user story iterate engaging co-working intuitive pitch
-                  deck hacker prototype SpaceTeam user centered design big data.
-                </p>
-                <a
-                  href="#"
-                  class="d-flex align-items-center link"
-                  title="See Details"
-                  >See Details
-                  <img
-                    src="<?php echo get_bloginfo('template_url'); ?>/images/arrow-right.svg"
-                    alt="See Details"
-                    width="11"
-                    height="7"
-                /></a>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="section-min" data-aos="fade-up">
-                <img
-                  src="<?php echo get_bloginfo('template_url'); ?>/images/design.svg"
-                  alt="Design"
-                  title="Design"
-                  class="mb-3"
-                  width="16"
-                  height="21"
-                />
-                <h3>Design.</h3>
-                <p>
-                  Ship it user story iterate engaging co-working intuitive pitch
-                  deck hacker prototype SpaceTeam user centered design big data.
-                </p>
-                <a
-                  href="#"
-                  class="d-flex align-items-center link"
-                  title="See Details"
-                  >See Details
-                  <img
-                    src="<?php echo get_bloginfo('template_url'); ?>/images/arrow-right.svg"
-                    alt="See Details"
-                    width="11"
-                    height="7"
-                /></a>
-              </div>
-            </div>
+            <?php
+                if(have_rows('services')):while(have_rows('services')):the_row();
+                    ?>
+                    <div class="col-md-4">
+                        <div class="section-min" data-aos="fade-up">
+                            <?php
+                                $image = get_sub_field('image');
+                                if(!empty($image)){
+                                  
+                                    ?>
+                                    <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" title="<?php echo $image['title']; ?>" class="mb-3">
+                                    <?php
+                                }
+                            ?>
+                            <h3><?php echo get_sub_field('title'); ?></h3>
+                            <p><?php echo get_sub_field('description'); ?></p>
+                           <?php
+                            $link = get_sub_field('link');
+                            if($link){ ?>
+                                <a href="<?php echo $link; ?>" class="d-flex align-items-center link" title="See Details"
+                  >See Details <img src="<?php echo get_bloginfo('template_url'); ?>/images/arrow-right.svg"
+                    alt="See Details" width="11" height="7" /></a>
+                        <?php  }  ?> 
+                        </div>
+                    </div>
+                    <?php
+                endwhile;endif;
+            ?>
+           
           </div>
         </div>
       </div>
