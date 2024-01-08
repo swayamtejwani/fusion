@@ -37,6 +37,7 @@ function fusion_load_css_js(){
     
     wp_enqueue_script('bootstrapminjs', get_bloginfo('template_url').'/js/bootstrap.min.js', array('jquery'));
     wp_enqueue_script('aosjs','https://unpkg.com/aos@next/dist/aos.js',array('jquery'));
+    wp_enquque_script('customjs', get_bloginfo('template_url').'/js/custom.js', array('jquery'));
    
 }
 add_action('wp_enqueue_scripts','fusion_load_css_js');
