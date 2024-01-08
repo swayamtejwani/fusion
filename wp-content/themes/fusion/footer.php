@@ -173,8 +173,7 @@
         </div>
       </div>
     </footer>
-    <script src="<?php echo get_bloginfo('template_url'); ?>/js/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  
     <script>
       AOS.init();
     </script>

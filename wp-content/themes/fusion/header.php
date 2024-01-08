@@ -21,15 +21,6 @@
       sizes="16x16"
       href="<?php echo get_bloginfo('template_url'); ?>/images/favicon-16x16.png"
     />
-    <link rel="manifest" href="<?php echo get_bloginfo('template_url'); ?>/images/site.webmanifest" />
-    <link rel="mask-icon" href="<?php echo get_bloginfo('template_url'); ?>/images/safari-pinned-tab.svg" color="#5bbad5" />
-    <link rel="shortcut icon" href="<?php echo get_bloginfo('template_url'); ?>/images/favicon.ico" />
-    <meta name="msapplication-TileColor" content="#da532c" />
-    <meta name="msapplication-config" content="<?php echo get_bloginfo('template_url'); ?>/images/browserconfig.xml" />
-    <meta name="theme-color" content="#ffffff" />
-    <link href="<?php echo get_bloginfo('template_url'); ?>/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="<?php echo get_bloginfo('template_url'); ?>/css/style.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <?php wp_head(); ?>
   </head>
 
